@@ -1,19 +1,21 @@
-To: The love of my Life❤️
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title> To: The love of my Life💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine Surprise</title>
+
   <style>
+    /* ===== Body & general ===== */
     body {
-      font-family: 'Georgia', serif;
-      background: linear-gradient(to bottom, #ffd6e8, #fff);
-      text-align: center;
-      padding: 40px;
-      color: #4a2c2a;
-      overflow: hidden;
+      margin: 0;
+      padding: 20px;
+      font-family: 'Arial', sans-serif;
+      background: #fff0f5;
+      overflow-x: hidden;
     }
 
+    /* ===== Floating hearts background ===== */
     .hearts {
       position: fixed;
       top: 0;
@@ -43,9 +45,10 @@ To: The love of my Life❤️
       }
     }
 
-      .card {
+    /* ===== Card container ===== */
+    .card {
       position: relative;
-      z-index: 10; /* 👈 force it above hearts */
+      z-index: 10; /* ensures it's above hearts */
       background: white;
       max-width: 600px;
       margin: 60px auto;
@@ -53,23 +56,20 @@ To: The love of my Life❤️
       border-radius: 20px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.1);
       text-align: center;
-          }
-
     }
 
-      .card img {
+    /* ===== Image ===== */
+    .card img {
       width: 100%;
-      max-width: 320px;   /* 👈 makes image smaller on PC */
+      max-width: 320px;
       height: auto;
       display: block;
-      margin: 0 auto 15px;
+      margin: 0 auto 20px;
       border-radius: 15px;
-                }
-
-        }
-
+      object-fit: cover;
     }
 
+    /* ===== Text ===== */
     h1 {
       font-size: 2.5em;
       margin-bottom: 10px;
@@ -78,9 +78,10 @@ To: The love of my Life❤️
     p {
       font-size: 1.1em;
       line-height: 1.6;
-      margin-bottom: 25px;
+      margin-bottom: 15px;
     }
 
+    /* ===== Buttons ===== */
     button {
       font-size: 1em;
       padding: 12px 20px;
@@ -110,6 +111,7 @@ To: The love of my Life❤️
       color: #555;
     }
 
+    /* ===== Surprise message ===== */
     #surprise {
       opacity: 0;
       transform: translateY(10px);
@@ -123,26 +125,37 @@ To: The love of my Life❤️
       opacity: 1;
       transform: translateY(0);
     }
+
+    /* ===== Mobile responsiveness ===== */
     @media (max-width: 480px) {
-    h1 {
-    font-size: 1.8em;
+      h1 {
+        font-size: 1.8em;
       }
 
-    button {
-    width: 100%;
-    margin: 6px 0;
-          }
-}
+      .card {
+        padding: 20px;
+      }
+
+      .card img {
+        max-width: 100%;
+      }
+
+      button {
+        width: 100%;
+        margin: 6px 0;
+      }
+    }
 
   </style>
 </head>
+
 <body>
+  <!-- Floating hearts -->
+  <div class="hearts" id="hearts-container"></div>
 
-  <!-- Floating Hearts -->
-  <div class="hearts" id="hearts"></div>
-
+  <!-- Main card -->
   <div class="card">
-    <img src="IMG_0309.jpeg" alt="Us 💕">
+    <img src="your-image.jpg" alt="Valentine">
 
     <h1>Will you be my Valentine? 💕</h1>
 
@@ -165,36 +178,38 @@ To: The love of my Life❤️
   </div>
 
   <script>
-    function sayYes() {
-      const surprise = document.getElementById("surprise");
+    /* ===== Floating hearts script ===== */
+    const heartsContainer = document.getElementById('hearts-container');
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = (10 + Math.random() * 20) + 'px';
+      heart.innerText = '💖';
+      heartsContainer.appendChild(heart);
+
       setTimeout(() => {
-        surprise.classList.add("show");
-      }, 100);
+        heartsContainer.removeChild(heart);
+      }, 8000);
+    }
+
+    setInterval(createHeart, 300);
+
+    /* ===== Button scripts ===== */
+    function sayYes() {
+      document.getElementById('surprise').classList.add('show');
     }
 
     function moveButton(btn) {
-      btn.style.position = "absolute";
-      btn.style.top = Math.random() * 80 + "%";
-      btn.style.left = Math.random() * 80 + "%";
+      const containerWidth = btn.parentElement.offsetWidth;
+      const btnWidth = btn.offsetWidth;
+      const maxLeft = containerWidth - btnWidth;
+      const randomX = Math.random() * maxLeft;
+      const randomY = Math.random() * 50;
+      btn.style.position = 'relative';
+      btn.style.transform = `translate(${randomX}px, -${randomY}px)`;
     }
-
-    const heartsContainer = document.getElementById("hearts");
-
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.innerHTML = "❤️";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = Math.random() * 4 + 6 + "s";
-      heart.style.fontSize = Math.random() * 10 + 15 + "px";
-
-      heartsContainer.appendChild(heart);
-
-      setTimeout(() => heart.remove(), 10000);
-    }
-
-    setInterval(createHeart, 500);
   </script>
-
 </body>
 </html>
