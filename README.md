@@ -43,24 +43,29 @@ To: The love of my Life❤️
       }
     }
 
-    .card {
+      .card {
       position: relative;
-      z-index: 1;
+      z-index: 10; /* 👈 force it above hearts */
       background: white;
       max-width: 600px;
-      margin: auto;
+      margin: 60px auto;
       padding: 30px;
       border-radius: 20px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      text-align: center;
+          }
+
     }
 
-    img {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    border-radius: 15px;
-    margin-bottom: 20px;
-    display: block;
+      .card img {
+      width: 100%;
+      max-width: 320px;   /* 👈 makes image smaller on PC */
+      height: auto;
+      display: block;
+      margin: 0 auto 15px;
+      border-radius: 15px;
+                }
+
         }
 
     }
@@ -118,6 +123,17 @@ To: The love of my Life❤️
       opacity: 1;
       transform: translateY(0);
     }
+    @media (max-width: 480px) {
+    h1 {
+    font-size: 1.8em;
+      }
+
+    button {
+    width: 100%;
+    margin: 6px 0;
+          }
+}
+
   </style>
 </head>
 <body>
