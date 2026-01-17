@@ -155,7 +155,7 @@
 
   <!-- Main card -->
   <div class="card">
-    <img src="your-image.jpg" alt="Valentine">
+    <img src="IMG_0309.jpeg" alt="Valentine">
 
     <h1>Will you be my Valentine? 💕</h1>
 
